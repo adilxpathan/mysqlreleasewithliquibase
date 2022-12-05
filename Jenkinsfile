@@ -1,6 +1,9 @@
 pipeline {
   agent { 
     label 'build-in'
+  }
+  environment {
+    DB_CREDS=credentials('mysql-db-credentials')
   } 
   stages {
     stage('Status') {
