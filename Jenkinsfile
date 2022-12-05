@@ -1,6 +1,8 @@
 pipeline {
-  agent { 
-    label 'liquibase'
+  agent {
+    node {
+      label 'liquibase'
+    }
   }
   environment {
     DB_CREDS=credentials('mysql-db-credentials')
