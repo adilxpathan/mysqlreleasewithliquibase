@@ -1,0 +1,14 @@
+<changeSet id="3" author="indira">
+	<createTable tableName="order3">
+		<column name="id" type="int">
+			<constraints primaryKey="true" nullable="false"/>
+		</column>
+		<column name="Ordername" type="varchar(50)"/>
+		<column name="Qty" type="int">
+			<!--<constraints nullable="false"/>-->
+		</column>
+	</createTable>
+</changeSet>
+<changeSet id="tag-3.0" author="indira">
+	<tagDatabase tag="3.0" />
+</changeSet>
