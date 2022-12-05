@@ -16,6 +16,6 @@
         </createTable>
     </changeSet>
         <changeSet id="tagorder-1.0" author="rakesh635">
-            <tagDatabase tag="1.0" />
+            <tagDatabase tag="order1.0" />
         </changeSet>
 </databaseChangeLog>
