@@ -1,6 +1,6 @@
 pipeline {
   agent { 
-    label 'build-in'
+    label 'liquibase'
   }
   environment {
     DB_CREDS=credentials('mysql-db-credentials')
