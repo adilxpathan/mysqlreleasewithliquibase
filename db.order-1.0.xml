@@ -11,6 +11,7 @@
             </column>
             <column name="Ordername" type="varchar(50)"/>
             <column name="Qty" type="int">
+            <column name="Qty1" type="int">
                 <!--<constraints nullable="false"/>-->
             </column>
         </createTable>
