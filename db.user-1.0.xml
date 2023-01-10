@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="2.0" encoding="UTF-8"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <changeSet id="taguserdetail-1" author="rakesh635">
-        <createTable tableName="userdetailnew1">
+    <changeSet id="taguserdetail-2" author="rakesh635">
+        <createTable tableName="userdetailnew2">
             <column name="id" type="int">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -15,7 +15,7 @@
             </column>
         </createTable>
     </changeSet>
-        <changeSet id="userdetail-1.0" author="rakesh635">
-            <tagDatabase tag="userdetail1.0" />
+        <changeSet id="userdetail-2.0" author="rakesh635">
+            <tagDatabase tag="userdetail2.0" />
         </changeSet>
 </databaseChangeLog>
