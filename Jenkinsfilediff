@@ -10,7 +10,6 @@ pipeline {
   stages {
     stage('Diff Dev with QA') {
       steps {
-        // sh 'liquibase diff --url="jdbc:mysql://54.226.117.89:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CRED_PSW --referenceUrl="jdbc:mysql://54.226.117.89:3306/test_dev?useSSL=false" --referenceUsername=$DB_CREDS_USR --referencePassword=$DB_CREDS_PSW --output-file=devqadiff.json'
         sh 'liquibase diff --url="jdbc:mysql://3.236.239.185:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CRED_PSW --referenceUrl="jdbc:mysql://3.236.239.185:3306/test_dev?useSSL=false" --referenceUsername=$DB_CREDS_USR --referencePassword=$DB_CREDS_PSW --output-file=devqadiff.json'
       }
     }
