@@ -10,7 +10,8 @@ pipeline {
   stages {
     stage('Diff Dev with QA') {
       steps {
-        sh 'liquibase diff --url="jdbc:mysql://54.226.117.89:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CREDS_PSW --referenceUrl="jdbc:mysql://54.226.117.89:3306/test_dev?useSSL=false" --referenceUsername=$DB_CREDS_USR --referencePassword=$DB_CREDS_PSW --output-file=devqadiff.json'
+        # sh 'liquibase diff --url="jdbc:mysql://54.226.117.89:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CRED_PSW --referenceUrl="jdbc:mysql://54.226.117.89:3306/test_dev?useSSL=false" --referenceUsername=$DB_CREDS_USR --referencePassword=$DB_CREDS_PSW --output-file=devqadiff.json'
+        sh 'liquibase diff --url="jdbc:mysql://3.236.239.185:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CRED_PSW --referenceUrl="jdbc:mysql://3.236.239.185:3306/test_dev?useSSL=false" --referenceUsername=$DB_CREDS_USR --referencePassword=$DB_CREDS_PSW --output-file=devqadiff.json'
       }
     }
     stage('Display Diff') {
@@ -20,19 +21,22 @@ pipeline {
     }
     stage('Generate Changelog') {
       steps {
-        sh 'liquibase diff-changelog --changelog-file=dbchangelog.xml --url="jdbc:mysql://54.226.117.89:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CREDS_PSW --referenceUrl="jdbc:mysql://54.226.117.89:3306/test_dev?useSSL=false" --referenceUsername=$DB_CREDS_USR --referencePassword=$DB_CREDS_PSW --output-file=devqadiff.json'
+        # sh 'liquibase diff-changelog --changelog-file=dbchangelog.xml --url="jdbc:mysql://54.226.117.89:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CREDS_PSW --referenceUrl="jdbc:mysql://54.226.117.89:3306/test_dev?useSSL=false" --referenceUsername=$DB_CREDS_USR --referencePassword=$DB_CREDS_PSW --output-file=devqadiff.json'
+        sh 'liquibase diff-changelog --changelog-file=dbchangelog.xml --url="jdbc:mysql://3.236.239.185:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CREDS_PSW --referenceUrl="jdbc:mysql://3.236.239.185:3306/test_dev?useSSL=false" --referenceUsername=$DB_CREDS_USR --referencePassword=$DB_CREDS_PSW --output-file=devqadiff.json'
         sh 'cat dbchangelog.xml'
       }
     }
     stage('Generate Rollback Script') {
       steps {
-        sh 'liquibase future-rollback-sql --changelog-file=dbchangelog.xml --url="jdbc:mysql://54.226.117.89:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CREDS_PSW --output-file=rollbackscript.sql'
+        # sh 'liquibase future-rollback-sql --changelog-file=dbchangelog.xml --url="jdbc:mysql://54.226.117.89:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CREDS_PSW --output-file=rollbackscript.sql'
+        sh 'liquibase future-rollback-sql --changelog-file=dbchangelog.xml --url="jdbc:mysql://3.236.239.185:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CREDS_PSW --output-file=rollbackscript.sql'
         sh 'cat rollbackscript.sql'
       }
     }
     stage('Apply Changelog') {
       steps {
-        sh 'liquibase update --url="jdbc:mysql://54.226.117.89:3306/test_qa?useSSL=false" --changeLogFile=dbchangelog.xml --username=$DB_CREDS_USR --password=$DB_CREDS_PSW'
+        # sh 'liquibase update --url="jdbc:mysql://54.226.117.89:3306/test_qa?useSSL=false" --changeLogFile=dbchangelog.xml --username=$DB_CREDS_USR --password=$DB_CREDS_PSW'
+        sh 'liquibase update --url="jdbc:mysql://3.236.239.185:3306/test_qa?useSSL=false" --changeLogFile=dbchangelog.xml --username=$DB_CREDS_USR --password=$DB_CREDS_PSW'
       }
     }
   }
