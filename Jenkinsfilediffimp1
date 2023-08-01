@@ -14,6 +14,7 @@ pipeline {
   stages {
     stage('Diff Dev with QA') {
       steps {
+        sh 'export PATH=$PATH:/home/ubuntu/liquibase'
         sh 'echo $DB_CREDS_USR'
         sh 'echo $DB_CRED_PSW'
         sh 'liquibase diff --url="jdbc:mysql://44.211.98.199:3306/test_qa?useSSL=false" --username=$DB_CREDS_USR --password=$DB_CREDS_PSW --referenceUrl="jdbc:mysql://44.211.98.199:3306/test_dev?useSSL=false" --referenceUsername=$DB_CREDS_USR --referencePassword=$DB_CREDS_PSW --output-file=devqadiff.json'
