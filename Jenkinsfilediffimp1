@@ -4,6 +4,9 @@ pipeline {
       label 'liquibase'
     }
   }
+  tools {
+    git 'Gittool' 
+  }
 
   environment {
     DB_CREDS=credentials('mysql-db-credentials_testuser')
