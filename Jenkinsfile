@@ -14,10 +14,10 @@ pipeline {
 	    sh 'liquibase diff --url="jdbc:mysql://demo1.cly2fnimcg0u.ap-south-1.rds.amazonaws.com:3306/demo?useSSL=false" --changeLogFile=db.changelog.xml  --username=$DB_CREDS_USR --password=$DB_CREDS_PSW'
 	  }
     } */
-    stage('Update') {
+    /*stage('Update') {
       steps {
         sh 'liquibase update --url="jdbc:mysql://demo1.cly2fnimcg0u.ap-south-1.rds.amazonaws.com:3306/demo?useSSL=false" --changeLogFile=db.changelog.xml --username=$DB_CREDS_USR --password=$DB_CREDS_PSW'
       }
-    }
+    }*/
   }
 }
